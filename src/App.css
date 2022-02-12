@@ -14,7 +14,7 @@
 }
 
 .App-header {
-  background-color: #282c34;
+  background-color: white;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -35,4 +35,40 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+#flag {
+  min-height: 100vh;
+  text-align: center;
+  line-height: 50px;
+  position: relative;
+  background: #fff;
+}
+
+#flag:before {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  top: 0;
+  background: #00f;
+  width: 33%;
+  z-index: 4;
+}
+#flag:after {
+  content: "";
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  top: 0;
+  background: #f00;
+  width: 33%;
+  z-index: 4;
+}
+
+#flag h1 {
+  position: relative;
+  font-size: 12px;
+  color: #999;
+  z-index: 16;
 }
