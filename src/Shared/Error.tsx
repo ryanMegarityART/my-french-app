@@ -1,5 +1,5 @@
 import React from "react";
-import { Card, Modal } from "react-bootstrap";
+import { Card } from "react-bootstrap";
 
 export const Error = ({ show, handleClose }: any) => {
   return (
