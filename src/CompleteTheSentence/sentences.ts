@@ -45,4 +45,13 @@ export const sentences: Sentence[] = [
       { id: 3, value: "Votre", correct: false },
     ],
   },
+  {
+    id: 5,
+    sentenceWithGap: "Je te présente Madame Kirilova. |DELIMITER| ma prof d'bulgar",
+    options: [
+      { id: 1, value: "C'est", correct: true },
+      { id: 2, value: "Elle est", correct: false },
+      { id: 3, value: "Il est", correct: false },
+    ],
+  },
 ];

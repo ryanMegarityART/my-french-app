@@ -5,7 +5,10 @@ import { Button, Card, Container } from "react-bootstrap";
 import { Sentence, sentences } from "./sentences";
 
 export const CompleteTheSentence = () => {
-  const [selectedSentence, setSelectedSentence] = useState<Sentence>();
+  const [sentenceIndex, setSentenceIndex] = useState(0);
+  const [selectedSentence, setSelectedSentence] = useState<Sentence>(
+    sentences[sentenceIndex]
+  );
   const [selectedSentenceWithGapFormat, setSelectedSentenceWithGapFormat] =
     useState<string>("");
   const [showResponse, setShowResponse] = useState(false);
@@ -13,14 +16,10 @@ export const CompleteTheSentence = () => {
   const [score, setScore] = useState(0);
 
   const selectNewSentence = useCallback(() => {
-    let randomIndex = Math.floor(Math.random() * sentences.length);
-    let sentence = sentences[randomIndex];
-    if (selectedSentence) {
-      while (sentence?.id === selectedSentence?.id) {
-        randomIndex = Math.floor(Math.random() * sentences.length);
-        sentence = sentences[randomIndex];
-      }
-    }
+    setSentenceIndex(
+      sentenceIndex < sentences.length - 1 ? sentenceIndex + 1 : 0
+    );
+    const sentence = sentences[sentenceIndex];
     sentence.options.sort((a, b) => {
       if (Math.random() > 0.5) {
         return 1;
@@ -28,14 +27,9 @@ export const CompleteTheSentence = () => {
       return -1;
     });
     setSelectedSentence(sentence);
-  }, [setSelectedSentence, selectedSentence]);
+  }, [setSelectedSentence, sentenceIndex, setSentenceIndex]);
 
-  useEffect(() => {
-    let randomIndex = Math.floor(Math.random() * sentences.length);
-    let sentence = sentences[randomIndex];
-    setSelectedSentence(sentence);
-  }, [setSelectedSentence]);
-
+  
   useEffect(() => {
     setSelectedSentenceWithGapFormat(
       selectedSentence
@@ -113,19 +107,6 @@ export const CompleteTheSentence = () => {
           </Container>
         </Card.Body>
       </Card>
-
-      {/* <Card
-        className="text-center"
-        bg="dark"
-        style={{ zIndex: 100, margin: "15px" }}
-      >
-        <Card.Header className="mt-3">
-          <h4>série victorieuse</h4>
-        </Card.Header>
-        <Card.Body>
-          <Card.Text>{score}</Card.Text>
-        </Card.Body>
-      </Card> */}
       <Card
         className="text-center"
         bg="dark"
@@ -139,7 +120,6 @@ export const CompleteTheSentence = () => {
             {score}
           </Card.Title>
         </Card.Body>
-        {/* <Card.Footer className="text-muted">2 days ago</Card.Footer> */}
       </Card>
     </div>
   );
