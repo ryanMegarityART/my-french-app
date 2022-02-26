@@ -67,7 +67,7 @@ export const CompleteTheSentence = () => {
           return "outline-light";
         }
       }
-      return "secondary";
+      return "outline-light";
     },
     [selectedOption, showResponse]
   );
