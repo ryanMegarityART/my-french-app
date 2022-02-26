@@ -50,8 +50,10 @@ export const CompleteTheSentence = () => {
       setShowResponse(true);
       setTimeout(() => {
         setShowResponse(false);
-        selectNewSentence();
-      }, 600);
+        setTimeout(() => {
+          selectNewSentence();
+        }, 200);
+      }, 500);
     },
     [score, selectNewSentence]
   );
