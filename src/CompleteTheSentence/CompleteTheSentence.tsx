@@ -64,7 +64,7 @@ export const CompleteTheSentence = () => {
         } else if (option.id === selectedOption?.id) {
           return "danger";
         } else {
-          return "secondary";
+          return "outline-light";
         }
       }
       return "secondary";
