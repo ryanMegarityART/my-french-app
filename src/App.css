@@ -70,12 +70,31 @@
   flex-direction: column;
 }
 
-.btn:focus,
-.btn:active:focus,
-.btn.active:focus {
+button {
   outline: none;
+}
+.btn {
+  border-color: white;
+  color: white;
   box-shadow: none;
-  -webkit-box-shadow: none;
-  background-color: none;
-  border-color: none;
+  outline: none;
+}
+.btn:hover {
+  border-color: white;
+  color: white;
+}
+
+.btn:active {
+  border-color: white;
+  color: white;
+  box-shadow: none;
+  outline: none;
+}
+
+.btn:focus {
+  outline: none !important;
+}
+
+.btn:focus {
+  box-shadow: none;
 }

@@ -51,7 +51,7 @@ export const CompleteTheSentence = () => {
       setTimeout(() => {
         setShowResponse(false);
         selectNewSentence();
-      }, 800);
+      }, 600);
     },
     [score, selectNewSentence]
   );
@@ -60,14 +60,19 @@ export const CompleteTheSentence = () => {
     (option: any) => {
       if (showResponse) {
         if (option.id === selectedOption?.id && option.correct) {
-          return "success";
-        } else if (option.id === selectedOption?.id) {
-          return "danger";
-        } else {
-          return "outline-light";
+          return {
+            backgroundColor: "green",
+          };
+        }
+        if (option.id === selectedOption?.id) {
+          return {
+            backgroundColor: "red",
+          };
         }
       }
-      return "outline-light";
+      return {
+        backgroundColor: "transparent",
+      };
     },
     [selectedOption, showResponse]
   );
@@ -95,14 +100,14 @@ export const CompleteTheSentence = () => {
             {selectedSentence &&
               selectedSentence.options.map((option) => {
                 return (
-                  <Button
-                    variant={returnButtonVariant(option)}
-                    className="m-1"
+                  <button
+                    style={returnButtonVariant(option)}
+                    className="m-1 btn"
                     key={option.id}
                     onClick={() => handleClick(option)}
                   >
                     {option.value}
-                  </Button>
+                  </button>
                 );
               })}
           </Container>

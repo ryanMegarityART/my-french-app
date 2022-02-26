@@ -54,4 +54,14 @@ export const sentences: Sentence[] = [
       { id: 3, value: "Il est", correct: false },
     ],
   },
+
+  {
+    id: 6,
+    sentenceWithGap: "Le matin, on dit: |DELIMITER|",
+    options: [
+      { id: 1, value: "Bonjour", correct: true },
+      { id: 2, value: "Bonsoir", correct: false },
+      { id: 3, value: "Poisson", correct: false },
+    ],
+  },
 ];
