@@ -1,5 +1,5 @@
 import React, { useCallback, useEffect, useState } from "react";
-import { Button, Card, Container } from "react-bootstrap";
+import { Card, Container } from "react-bootstrap";
 // import { Success } from "../Shared/Success";
 // import { Error } from "../Shared/Error";
 import { Sentence, sentences } from "./sentences";
