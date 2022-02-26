@@ -5,9 +5,9 @@ import { Button, Card, Container } from "react-bootstrap";
 import { Sentence, sentences } from "./sentences";
 
 export const CompleteTheSentence = () => {
-  const [sentenceIndex, setSentenceIndex] = useState(0);
+  const [sentenceIndex, setSentenceIndex] = useState(1);
   const [selectedSentence, setSelectedSentence] = useState<Sentence>(
-    sentences[sentenceIndex]
+    sentences[0]
   );
   const [selectedSentenceWithGapFormat, setSelectedSentenceWithGapFormat] =
     useState<string>("");
@@ -15,10 +15,9 @@ export const CompleteTheSentence = () => {
   const [selectedOption, setSelectedOption] = useState<any>();
   const [score, setScore] = useState(0);
 
+  console.log(1, sentenceIndex);
+
   const selectNewSentence = useCallback(() => {
-    setSentenceIndex(
-      sentenceIndex < sentences.length - 1 ? sentenceIndex + 1 : 0
-    );
     const sentence = sentences[sentenceIndex];
     sentence.options.sort((a, b) => {
       if (Math.random() > 0.5) {
@@ -27,9 +26,11 @@ export const CompleteTheSentence = () => {
       return -1;
     });
     setSelectedSentence(sentence);
+    setSentenceIndex(
+      sentenceIndex < sentences.length - 1 ? sentenceIndex + 1 : 0
+    );
   }, [setSelectedSentence, sentenceIndex, setSentenceIndex]);
 
-  
   useEffect(() => {
     setSelectedSentenceWithGapFormat(
       selectedSentence

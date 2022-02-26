@@ -69,3 +69,12 @@
   display: flex;
   flex-direction: column;
 }
+
+.btn:focus,
+.btn:active:focus,
+.btn.active:focus {
+  outline: none;
+  box-shadow: none;
+  -webkit-box-shadow: none;
+  background-color: none;
+}
