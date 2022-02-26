@@ -14,20 +14,36 @@ export const CompleteTheSentence = () => {
   const [score, setScore] = useState(0);
 
   const selectNewSentence = useCallback(() => {
-    const randomIndex = Math.floor(Math.random() * sentences.length);
-    const sentence = sentences[randomIndex];
-    // sentence.options.sort((a, b) => {
-    //   if (Math.random() > 0.5) {
-    //     return 1;
-    //   }
-    //   return -1;
-    // });
+    let randomIndex = Math.floor(Math.random() * sentences.length);
+    let sentence = sentences[randomIndex];
+    console.log(
+      sentence,
+      selectedSentence,
+      sentence?.id === selectedSentence?.id
+    );
+    if (selectedSentence) {
+      console.log(
+        sentence,
+        selectedSentence,
+        sentence?.id === selectedSentence?.id
+      );
+      while (sentence?.id === selectedSentence?.id) {
+        randomIndex = Math.floor(Math.random() * sentences.length);
+        sentence = sentences[randomIndex];
+      }
+    }
+    sentence.options.sort((a, b) => {
+      if (Math.random() > 0.5) {
+        return 1;
+      }
+      return -1;
+    });
     setSelectedSentence(sentence);
-  }, [setSelectedSentence]);
+  }, [setSelectedSentence, selectedSentence]);
 
   useEffect(() => {
     selectNewSentence();
-  }, [selectNewSentence]);
+  }, []);
 
   useEffect(() => {
     setSelectedSentenceWithGapFormat(
@@ -79,12 +95,18 @@ export const CompleteTheSentence = () => {
       <Card
         className="text-center"
         bg="dark"
-        style={{ zIndex: 100, minWidth: "50vw" }}
+        style={{ zIndex: 100, width: "80vw" }}
       >
         <Card.Header className="mt-3">
           <h2>compléter la phrase</h2>
         </Card.Header>
         <Card.Body>
+          {selectedSentence && (
+            <img
+              style={{ height: "100px" }}
+              src={require(`./images/complete_${selectedSentence?.id}.jpg`)}
+            />
+          )}
           <Card.Text>{selectedSentenceWithGapFormat}</Card.Text>
           <Container className="multipleChoice">
             {selectedSentence &&
@@ -107,7 +129,7 @@ export const CompleteTheSentence = () => {
       <Card
         className="text-center"
         bg="dark"
-        style={{ zIndex: 100, minWidth: "25vw", margin: "15px" }}
+        style={{ zIndex: 100, margin: "15px" }}
       >
         <Card.Header className="mt-3">
           <h4>série victorieuse</h4>
