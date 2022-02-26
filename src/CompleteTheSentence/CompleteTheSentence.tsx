@@ -8,7 +8,6 @@ export const CompleteTheSentence = () => {
   const [selectedSentence, setSelectedSentence] = useState<Sentence>();
   const [selectedSentenceWithGapFormat, setSelectedSentenceWithGapFormat] =
     useState<string>("");
-  const [answerCorrect, setAnswerCorrect] = useState(false);
   const [showResponse, setShowResponse] = useState(false);
   const [selectedOption, setSelectedOption] = useState<any>();
   const [score, setScore] = useState(0);
@@ -16,17 +15,7 @@ export const CompleteTheSentence = () => {
   const selectNewSentence = useCallback(() => {
     let randomIndex = Math.floor(Math.random() * sentences.length);
     let sentence = sentences[randomIndex];
-    console.log(
-      sentence,
-      selectedSentence,
-      sentence?.id === selectedSentence?.id
-    );
     if (selectedSentence) {
-      console.log(
-        sentence,
-        selectedSentence,
-        sentence?.id === selectedSentence?.id
-      );
       while (sentence?.id === selectedSentence?.id) {
         randomIndex = Math.floor(Math.random() * sentences.length);
         sentence = sentences[randomIndex];
@@ -42,8 +31,10 @@ export const CompleteTheSentence = () => {
   }, [setSelectedSentence, selectedSentence]);
 
   useEffect(() => {
-    selectNewSentence();
-  }, []);
+    let randomIndex = Math.floor(Math.random() * sentences.length);
+    let sentence = sentences[randomIndex];
+    setSelectedSentence(sentence);
+  }, [setSelectedSentence]);
 
   useEffect(() => {
     setSelectedSentenceWithGapFormat(
@@ -59,14 +50,10 @@ export const CompleteTheSentence = () => {
 
   const handleClick = useCallback(
     (option) => {
-      console.log(option);
       option.correct ? setScore(score + 1) : setScore(0);
-      console.log(score);
       setSelectedOption(option);
-      setAnswerCorrect(option.correct);
       setShowResponse(true);
       setTimeout(() => {
-        setAnswerCorrect(false);
         setShowResponse(false);
         selectNewSentence();
       }, 800);
@@ -105,6 +92,7 @@ export const CompleteTheSentence = () => {
             <img
               style={{ height: "100px" }}
               src={require(`./images/complete_${selectedSentence?.id}.jpg`)}
+              alt="supports q"
             />
           )}
           <Card.Text>{selectedSentenceWithGapFormat}</Card.Text>
@@ -126,7 +114,7 @@ export const CompleteTheSentence = () => {
         </Card.Body>
       </Card>
 
-      <Card
+      {/* <Card
         className="text-center"
         bg="dark"
         style={{ zIndex: 100, margin: "15px" }}
@@ -135,10 +123,23 @@ export const CompleteTheSentence = () => {
           <h4>série victorieuse</h4>
         </Card.Header>
         <Card.Body>
-          <Card.Text>
-            <h4>{score}</h4>
-          </Card.Text>
+          <Card.Text>{score}</Card.Text>
         </Card.Body>
+      </Card> */}
+      <Card
+        className="text-center"
+        bg="dark"
+        style={{ zIndex: 100, margin: "15px" }}
+      >
+        <Card.Header>série victorieuse</Card.Header>
+        <Card.Body>
+          <Card.Title
+            style={score === 0 ? { color: "red" } : { color: "green" }}
+          >
+            {score}
+          </Card.Title>
+        </Card.Body>
+        {/* <Card.Footer className="text-muted">2 days ago</Card.Footer> */}
       </Card>
     </div>
   );
