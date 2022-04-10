@@ -167,16 +167,10 @@ export const sentences: Sentence[] = [
     sentenceWithGap: "Pour saluer, tu dis :  |DELIMITER| ",
     hasImage: false,
     options: [
-      { id: 1, value: "Ça va ? Comment vas-tu ?", correct: false },
+      { id: 1, value: "Salut, bonjour !", correct: true },
+      { id: 2, value: "Au revoir, salut, à ce soir. ", correct: false },
       {
-        id: 2,
-        value: "Ça va pas mal. Ça va bien. Comme ci comme ça.",
-        correct: false,
-      },
-      { id: 3, value: "Salut, bonjour !", correct: true },
-      { id: 4, value: "Au revoir, salut, à ce soir. ", correct: false },
-      {
-        id: 5,
+        id: 3,
         value: "Merci beaucoup ! Je vous remercie. Merci",
         correct: false,
       },
@@ -238,6 +232,28 @@ export const sentences: Sentence[] = [
       {
         id: 3,
         value: "Merci beaucoup ! Je vous remercie. Merci",
+        correct: true,
+      },
+    ],
+  },
+  {
+    id: 21,
+    sentenceWithGap: "Le nombre est quoi? ",
+    hasImage: true,
+    options: [
+      {
+        id: 1,
+        value: "Trois mille, quatre cent, soisante-vingt-onze",
+        correct: false,
+      },
+      {
+        id: 2,
+        value: "Deux mille, cinq cent, quatre-vingt dix et un",
+        correct: false,
+      },
+      {
+        id: 3,
+        value: "Deux mille, quatre cent, quatre-vingt onze",
         correct: true,
       },
     ],
