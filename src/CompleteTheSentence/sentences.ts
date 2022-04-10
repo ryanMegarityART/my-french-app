@@ -187,16 +187,10 @@ export const sentences: Sentence[] = [
     sentenceWithGap: "Pour dire au revoir, tu dis :  |DELIMITER| ",
     hasImage: false,
     options: [
-      { id: 1, value: "Ça va ? Comment vas-tu ?", correct: false },
+      { id: 1, value: "Salut, bonjour !", correct: false },
+      { id: 2, value: "Au revoir, salut, à ce soir. ", correct: true },
       {
-        id: 2,
-        value: "Ça va pas mal. Ça va bien. Comme ci comme ça.",
-        correct: false,
-      },
-      { id: 3, value: "Salut, bonjour !", correct: false },
-      { id: 4, value: "Au revoir, salut, à ce soir. ", correct: true },
-      {
-        id: 5,
+        id: 3,
         value: "Merci beaucoup ! Je vous remercie. Merci",
         correct: false,
       },
@@ -213,10 +207,8 @@ export const sentences: Sentence[] = [
         value: "Ça va pas mal. Ça va bien. Comme ci comme ça.",
         correct: false,
       },
-      { id: 3, value: "Salut, bonjour !", correct: false },
-      { id: 4, value: "Au revoir, salut, à ce soir. ", correct: false },
       {
-        id: 5,
+        id: 3,
         value: "Merci beaucoup ! Je vous remercie. Merci",
         correct: false,
       },
@@ -227,19 +219,13 @@ export const sentences: Sentence[] = [
     sentenceWithGap: "pour dire comment ça va, tu dis :  |DELIMITER| ",
     hasImage: false,
     options: [
-      { id: 1, value: "Ça va ? Comment vas-tu ?", correct: false },
       {
-        id: 2,
+        id: 1,
         value: "Ça va pas mal. Ça va bien. Comme ci comme ça.",
         correct: true,
       },
-      { id: 3, value: "Salut, bonjour !", correct: false },
-      { id: 4, value: "Au revoir, salut, à ce soir. ", correct: false },
-      {
-        id: 5,
-        value: "Merci beaucoup ! Je vous remercie. Merci",
-        correct: false,
-      },
+      { id: 2, value: "Salut, bonjour !", correct: false },
+      { id: 3, value: "Au revoir, salut, à ce soir. ", correct: false },
     ],
   },
   {
@@ -248,15 +234,9 @@ export const sentences: Sentence[] = [
     hasImage: false,
     options: [
       { id: 1, value: "Ça va ? Comment vas-tu ?", correct: false },
+      { id: 2, value: "Salut, bonjour !", correct: false },
       {
-        id: 2,
-        value: "Ça va pas mal. Ça va bien. Comme ci comme ça.",
-        correct: false,
-      },
-      { id: 3, value: "Salut, bonjour !", correct: false },
-      { id: 4, value: "Au revoir, salut, à ce soir. ", correct: false },
-      {
-        id: 5,
+        id: 3,
         value: "Merci beaucoup ! Je vous remercie. Merci",
         correct: true,
       },
