@@ -93,7 +93,11 @@ export const CompleteTheSentence = () => {
           {selectedSentence && (
             <img
               style={{ height: "100px" }}
-              src={require(`./images/complete_${selectedSentence?.id}.jpg`)}
+              src={
+                selectedSentence && selectedSentence.hasImage
+                  ? require(`./images/complete_${selectedSentence?.id}.jpg`)
+                  : require(`./images/complete_question_mark.gif`)
+              }
               alt="supports q"
             />
           )}
